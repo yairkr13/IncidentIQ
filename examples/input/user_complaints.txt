@@ -1,0 +1,18 @@
+Ticket #48213 (14:14 UTC) — "I tried to check out three times and just got a
+spinning wheel for a while, then an error. Not sure if my card was charged."
+
+Ticket #48219 (14:19 UTC) — "Checkout says 'Something went wrong, please try
+again.' Tried on both my phone and laptop, same result."
+
+Ticket #48225 (14:21 UTC) — "I got charged TWICE for the same order (#88256).
+Please refund the duplicate charge, this is urgent."
+
+Ticket #48231 (14:24 UTC) — "Cart items disappeared after the checkout error.
+Had to re-add everything and it failed again."
+
+Ticket #48237 (14:29 UTC) — "Getting an error at the very last step of
+checkout. Was fine yesterday. Is something wrong on your end?"
+
+Live chat transcript excerpt (14:31 UTC), agent notes: "Customer confirms
+error appears only after clicking 'Place Order,' not earlier in the funnel.
+Customer is on mobile Safari. No error shown on the cart or shipping steps."

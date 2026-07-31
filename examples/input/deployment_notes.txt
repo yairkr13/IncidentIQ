@@ -1,0 +1,23 @@
+Release: checkout-service v2.4.1
+Deployed: 2026-07-29 14:00 UTC
+Deployed by: CI/CD pipeline (triggered by merge of PR #742)
+Rollout method: rolling update, 4 pods, no canary stage configured for this service
+
+Changes included in this release:
+- Refactored the internal payment client to use a new HTTP connection-pooling
+  library instead of a plain requests.Session per call.
+- Reduced the database connection pool size for checkout-service from
+  max_connections=50 to max_connections=20. Rationale in the PR description:
+  "checkout-service was over-provisioned relative to actual usage in staging,
+  lowering to save memory on the pod."
+- Bumped the Stripe SDK dependency from 9.2.0 to 11.0.0.
+- Minor copy changes to the order-confirmation email template (unrelated to
+  checkout flow).
+
+Notes from the reviewer (approved with one comment, not blocking):
+"Did we load-test the smaller pool size under peak traffic? Staging traffic is
+much lower than prod, so 20 connections might not be enough once real load
+hits it."
+
+No load test was run against the new pool size before this release.
+Previous release (2.4.0) had been running for 11 days with no incidents.

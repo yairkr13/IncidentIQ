@@ -1,0 +1,20 @@
+2026-07-29T14:00:12Z checkout-service INFO  deploy complete, version=2.4.1, pod=checkout-service-7f9c8-2m4kd
+2026-07-29T14:01:03Z checkout-service INFO  health check passed
+2026-07-29T14:09:41Z checkout-service ERROR /api/checkout timeout waiting for db connection pool (waited 5012ms) order_id=ORD-88213
+2026-07-29T14:09:58Z checkout-service ERROR /api/checkout timeout waiting for db connection pool (waited 5004ms) order_id=ORD-88214
+2026-07-29T14:10:22Z checkout-service WARN  db pool: active=20 idle=0 max=20
+2026-07-29T14:10:45Z checkout-service ERROR /api/checkout 500 Internal Server Error order_id=ORD-88219
+2026-07-29T14:11:10Z checkout-service ERROR payment-client: request to stripe-api timed out after 8000ms order_id=ORD-88222
+2026-07-29T14:12:37Z checkout-service ERROR /api/checkout timeout waiting for db connection pool (waited 5000ms) order_id=ORD-88230
+2026-07-29T14:13:02Z checkout-service WARN  db pool: active=20 idle=0 max=20
+2026-07-29T14:14:19Z checkout-service ERROR payment-client: request to stripe-api timed out after 8000ms order_id=ORD-88241
+2026-07-29T14:15:55Z checkout-service ERROR /api/checkout 500 Internal Server Error order_id=ORD-88250
+2026-07-29T14:16:30Z checkout-service INFO  retry succeeded on attempt 2 order_id=ORD-88250
+2026-07-29T14:18:04Z checkout-service ERROR payment-client: duplicate charge detected on retry, charge_id=ch_3P1x already captured order_id=ORD-88256
+2026-07-29T14:19:12Z checkout-service ERROR /api/checkout timeout waiting for db connection pool (waited 5001ms) order_id=ORD-88260
+2026-07-29T14:20:47Z checkout-service WARN  db pool: active=20 idle=0 max=20
+2026-07-29T14:22:01Z checkout-service ERROR /api/checkout 500 Internal Server Error order_id=ORD-88271
+2026-07-29T14:23:15Z checkout-service INFO  page: on-call engineer notified (priya.nair)
+2026-07-29T14:25:33Z checkout-service ERROR payment-client: request to stripe-api timed out after 8000ms order_id=ORD-88280
+2026-07-29T14:27:02Z checkout-service WARN  db pool: active=20 idle=0 max=20
+2026-07-29T14:30:18Z checkout-service ERROR /api/checkout timeout waiting for db connection pool (waited 5010ms) order_id=ORD-88291

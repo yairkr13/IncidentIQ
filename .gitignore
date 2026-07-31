@@ -7,6 +7,7 @@ __pycache__/
 
 # Virtual Environment
 .venv/
+venv/
 
 # IDE
 .idea/
@@ -14,10 +15,18 @@ __pycache__/
 
 # Environment variables
 .env
+.env.*
+!.env.example
 
-# Streamlit
+# Streamlit secrets
 .streamlit/
+.streamlit/secrets.toml
 
 # OS
 .DS_Store
 Thumbs.db
+desktop.ini
+
+# Generated reports saved outside the tracked examples/output/ location
+/incident_analysis*.md
+!/examples/output/*.md

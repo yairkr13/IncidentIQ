@@ -1,0 +1,20 @@
+On July 29, 2026 around 14:10 UTC, customers started reporting that checkout was
+failing on shop.example.com. Submitting an order returned a generic error message
+("Something went wrong, please try again") instead of an order confirmation.
+
+The problem showed up about ten minutes after we rolled out release 2.4.1 to the
+checkout-service in production, which went out at 14:00 UTC. Within about ten
+minutes the error rate on the /api/checkout endpoint climbed from under 1% to
+roughly 42%. A few customers in support tickets mentioned seeing the spinner for
+a long time before the error appeared, and at least two people said their card
+was charged even though the order showed as failed.
+
+The on-call engineer (Priya Nair) was paged at 14:22 UTC when the error-rate
+alert crossed its threshold. As of writing this, the checkout-service has not
+been rolled back yet — we're still trying to figure out whether this is a
+database issue, a problem with the payment provider, or something in the 2.4.1
+release itself.
+
+Nothing else in the deployment calendar changed around the same time other than
+2.4.1. Traffic levels were normal for a Wednesday afternoon, so this doesn't
+look like a load spike.

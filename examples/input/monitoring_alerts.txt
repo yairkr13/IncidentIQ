@@ -1,0 +1,9 @@
+[ALERT] checkout-service error_rate_5xx > 5% (current: 18%) — fired 2026-07-29 14:16 UTC
+[ALERT] checkout-service error_rate_5xx > 5% (current: 42%) — fired 2026-07-29 14:19 UTC
+[ALERT] checkout-service p95_latency_ms > 2000 (current: 6400) — fired 2026-07-29 14:21 UTC
+[ALERT] postgres-checkout-db active_connections near max_connections (20/20) — fired 2026-07-29 14:20 UTC
+[WARN]  stripe-api client_timeout_rate elevated (current: 8%, baseline: <1%) — fired 2026-07-29 14:25 UTC
+[INFO]  postgres-checkout-db cpu_utilization normal (34%) — 2026-07-29 14:20 UTC
+[INFO]  postgres-checkout-db replication_lag_ms normal (12ms) — 2026-07-29 14:20 UTC
+[ALERT] checkout-service pod_restart_count == 0 (no restarts observed) — 2026-07-29 14:30 UTC
+[WARN]  checkout-service db_pool_wait_time_ms p95 > 4000 (current: 5010) — fired 2026-07-29 14:30 UTC

@@ -1,0 +1,12 @@
+timestamp,service,endpoint,status_code,latency_ms,message
+2026-07-29T14:00:00Z,checkout-service,/api/checkout,200,180,ok
+2026-07-29T14:05:00Z,checkout-service,/api/checkout,200,210,ok
+2026-07-29T14:09:41Z,checkout-service,/api/checkout,500,5012,db pool timeout
+2026-07-29T14:10:45Z,checkout-service,/api/checkout,500,180,internal error
+2026-07-29T14:11:10Z,checkout-service,/api/checkout,502,8000,stripe timeout
+2026-07-29T14:15:55Z,checkout-service,/api/checkout,500,190,internal error
+2026-07-29T14:16:30Z,checkout-service,/api/checkout,200,4300,ok after retry
+2026-07-29T14:19:12Z,checkout-service,/api/checkout,500,5001,db pool timeout
+2026-07-29T14:22:01Z,checkout-service,/api/checkout,500,175,internal error
+2026-07-29T14:25:33Z,checkout-service,/api/checkout,502,8000,stripe timeout
+2026-07-29T14:30:18Z,checkout-service,/api/checkout,500,5010,db pool timeout
