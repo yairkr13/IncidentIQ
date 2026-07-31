@@ -80,21 +80,21 @@ state; everything else is a plain, side-effect-free module it calls into:
 
 ```mermaid
 flowchart TD
-    A[User fills in incident fields<br/>+ optional file upload] --> B["utils.parse_file()<br/>(.txt / .json / .csv)"]
+    A["User fills in incident fields<br>+ optional file upload"] --> B["utils.parse_file()<br>(.txt / .json / .csv)"]
     B --> C["utils.validate_inputs()"]
     C -->|at least one field/file non-empty| D["prompts.build_analysis_prompt()"]
-    C -->|all empty| C1[Warn user, no API call]
-    D --> E["ai_service.run_analysis()<br/>OpenAI Chat Completions (gpt-4o)"]
-    E --> F["models.AnalysisReport<br/>Pydantic validation"]
-    F --> G[Report rendered in UI:<br/>summary, timeline, facts, assumptions,<br/>hypotheses, risks, next actions, postmortem]
-    G --> H{User clicks<br/>Challenge Analysis?}
-    H -->|yes| I["prompts.build_challenge_prompt()<br/>(original input + analysis report)"]
-    I --> J["ai_service.run_challenge()<br/>OpenAI Chat Completions (gpt-4o)"]
-    J --> K["models.ChallengeReport<br/>Pydantic validation"]
-    K --> L[Challenge report rendered:<br/>unsupported claims, alternatives, biases]
+    C -->|all empty| C1["Warn user, no API call"]
+    D --> E["ai_service.run_analysis()<br>OpenAI Chat Completions (gpt-4o)"]
+    E --> F["models.AnalysisReport<br>Pydantic validation"]
+    F --> G["Report rendered in UI:<br>summary, timeline, facts, assumptions,<br>hypotheses, risks, next actions, postmortem"]
+    G --> H{"User clicks<br>Challenge Analysis?"}
+    H -->|yes| I["prompts.build_challenge_prompt()<br>(original input + analysis report)"]
+    I --> J["ai_service.run_challenge()<br>OpenAI Chat Completions (gpt-4o)"]
+    J --> K["models.ChallengeReport<br>Pydantic validation"]
+    K --> L["Challenge report rendered:<br>unsupported claims, alternatives, biases"]
     G --> M["utils.assemble_markdown()"]
     L --> M
-    M --> N[Export as Markdown / download]
+    M --> N["Export as Markdown / download"]
 ```
 
 ## Repository Structure
