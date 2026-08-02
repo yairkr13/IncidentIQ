@@ -223,6 +223,10 @@ if analyze_clicked:
             err = f"OpenAI error: {exc.message}"
             st.session_state.api_error = err
             st.error(err)
+        except ai_service.EmptyResponseError as exc:
+            err = str(exc)
+            st.session_state.api_error = err
+            st.error(err)
         except json.JSONDecodeError:
             err = "Response was not valid JSON."
             st.session_state.api_error = err
@@ -402,6 +406,8 @@ function copyText() {{
                 st.error("Invalid API key.")
             except openai.APIError as exc:
                 st.error(f"OpenAI error: {exc.message}")
+            except ai_service.EmptyResponseError as exc:
+                st.error(str(exc))
             except json.JSONDecodeError:
                 st.error("Challenge response was not valid JSON.")
             except ValidationError as exc:

@@ -16,6 +16,22 @@ from pydantic import ValidationError  # noqa: F401 — re-exported for callers
 from models import AnalysisReport, ChallengeReport
 
 
+class EmptyResponseError(Exception):
+    """Raised when the OpenAI API returns a response with no usable content."""
+
+
+def _extract_content(response) -> str:
+    """Return the message content from a chat completion response.
+
+    Raises:
+        EmptyResponseError: If the response, its choices, or the first
+            choice's message content is missing or empty.
+    """
+    if not response or not response.choices or not response.choices[0].message.content:
+        raise EmptyResponseError("The OpenAI API returned an empty response.")
+    return response.choices[0].message.content
+
+
 def get_api_key() -> str | None:
     """Return the OpenAI API key, or ``None`` if unavailable.
 
@@ -56,6 +72,7 @@ def run_analysis(
         openai.APITimeoutError: If the request exceeds the client timeout.
         openai.AuthenticationError: If the API key is invalid.
         openai.APIError: For any other OpenAI API error.
+        EmptyResponseError: If the API returns no usable response content.
         json.JSONDecodeError: If the response content is not valid JSON.
         pydantic.ValidationError: If the parsed JSON does not match the schema.
     """
@@ -68,7 +85,7 @@ def run_analysis(
         response_format={"type": "json_object"},
         temperature=0,
     )
-    data = json.loads(response.choices[0].message.content)
+    data = json.loads(_extract_content(response))
     return AnalysisReport.model_validate(data)
 
 
@@ -93,6 +110,7 @@ def run_challenge(
         openai.APITimeoutError: If the request exceeds the client timeout.
         openai.AuthenticationError: If the API key is invalid.
         openai.APIError: For any other OpenAI API error.
+        EmptyResponseError: If the API returns no usable response content.
         json.JSONDecodeError: If the response content is not valid JSON.
         pydantic.ValidationError: If the parsed JSON does not match the schema.
     """
@@ -105,5 +123,5 @@ def run_challenge(
         response_format={"type": "json_object"},
         temperature=0,
     )
-    data = json.loads(response.choices[0].message.content)
+    data = json.loads(_extract_content(response))
     return ChallengeReport.model_validate(data)

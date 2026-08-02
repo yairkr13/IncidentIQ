@@ -39,7 +39,7 @@ class Hypothesis(BaseModel):
 
     title: str
     confidence: int = Field(ge=0, le=100)  # Requirement 4.2: integer in [0, 100]
-    supporting_evidence: list[str]
+    supporting_evidence: list[str] = Field(min_length=1)  # Requirement 4.3: ≥1 supporting evidence item
     contradicting_evidence: list[str]
     recommended_tests: list[str] = Field(min_length=2)  # Requirement 4.5: ≥2 tests
 
@@ -74,7 +74,7 @@ class AnalysisReport(BaseModel):
     """Full analysis report produced by the Analysis Engine (Requirements 3–6)."""
 
     incident_summary: IncidentSummary
-    timeline: list[TimelineEvent]
+    timeline: list[TimelineEvent] = Field(min_length=1)  # Requirement 3.2: ≥1 timeline event
     facts: list[Fact]
     assumptions: list[str]
     hypotheses: list[Hypothesis] = Field(min_length=3)           # Requirement 4.1: ≥3
