@@ -139,6 +139,48 @@ IncidentIQ/
 - [Pydantic v2](https://docs.pydantic.dev/) — response schema validation
 - [pytest](https://pytest.org/) + [Hypothesis](https://hypothesis.readthedocs.io/) — test suite
 
+## AI Tools Used
+
+IncidentIQ relies on the following AI technologies:
+
+- OpenAI GPT-4o
+- OpenAI Chat Completions API
+- OpenAI Python SDK
+- Prompt Engineering
+- Structured JSON Outputs
+- Pydantic Validation
+
+## Prompt Design
+
+The system relies on two primary prompts.
+
+### Analysis Prompt
+
+The Analysis Prompt generates a structured incident report including:
+
+- Incident Summary
+- Timeline
+- Facts vs. Assumptions
+- Multiple Root Cause Hypotheses
+- Supporting and Contradicting Evidence
+- Confidence Levels
+- Next Debugging Actions
+- Draft Postmortem
+
+### Challenge Analysis Prompt
+
+The Challenge Analysis Prompt acts as a second reviewer of the generated report.
+
+It identifies:
+
+- Unsupported Claims
+- Alternative Explanations
+- Reasoning Biases
+
+The complete prompt implementations are available in:
+
+`prompts.py`
+
 ## Prerequisites
 
 - Python 3.11+ (developed against 3.13)
@@ -196,6 +238,17 @@ OPENAI_API_KEY = "sk-your-key-here"
 > `.env.*`, and `.streamlit/secrets.toml` are excluded via `.gitignore`.
 > If a key is ever committed by accident, treat it as compromised and
 > rotate it immediately from your OpenAI account.
+
+### macOS / Linux
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+
+pip install -r requirements.txt
+
+streamlit run app.py
+```
 
 ## Running the Application
 
@@ -299,7 +352,6 @@ sample incident data is included at
 - Allow model selection/configuration from the UI instead of a hardcoded
   constant.
 - Add retry/backoff for transient OpenAI API errors.
-- Add real screenshots and a demo video (see placeholders above/below).
 
 ## Troubleshooting
 
@@ -318,12 +370,12 @@ sample incident data is included at
 - **Port already in use** — run `streamlit run app.py --server.port 8502` (or
   any free port).
 
-## Authors / Contributors
+## Author
 
-- Project maintained by [@Yair Krothamer](https://github.com/yairk) _(update with your
-  preferred name/handle)_.
+**Yair Krothamer**
+
+GitHub: https://github.com/yairkr13
 
 ## Demo Video
 
-> A demo video has not been recorded yet.
-
+https://drive.google.com/drive/folders/14nMEaURD89k2PsXiOFuscYWM1e5XExcd?usp=share_link
